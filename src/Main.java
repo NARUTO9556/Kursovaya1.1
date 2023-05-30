@@ -1,30 +1,22 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
-    public static int remove_Duplicate_Elements(int[] arr, int n){
-        if (n==0 || n==1){
-            return n;
-        }
-        int[] tempA = new int[n];
-        int j = 0;
-        for (int i=0; i<n-1; i++){
-            if (arr[i] != arr[i+1]){
-                tempA[j++] = arr[i];
-            }
-        }
-        tempA[j++] = arr[n-1];
-        for (int i=0; i<j; i++){
-            arr[i] = tempA[i];
-        }
-        return j;
-    }
-
     public static void main(String[] args) {
-        int[] arr = {11,7,2,2,7,8,8,8,3};
-        Arrays.sort(arr);
-        int length = arr.length;
-        length = remove_Duplicate_Elements(arr, length);
-        for (int i=0; i<length; i++)
-            System.out.print(arr[i]+" ");
+    String[] array = {"apple", "banana", "apple", "orange", "banana", "grape"};// Создаем множество для хранения уникальных строк
+    Set<String> uniqueSet = new HashSet<>();// Создаем список для хранения уникальных строк в порядке следования
+    List<String> uniqueList = new ArrayList<>();// Проходим по массиву строк
+        for(String str : array){ // Если строка еще не содержится в множестве, добавляем ее в список и множество
+            if (!uniqueSet.contains(str)) {
+            uniqueSet.add(str);
+            uniqueList.add(str);
+        }
+    }// Объединяем строки из списка в одну
+
+    String result = String.join(" ", uniqueList);
+
+        System.out.println(result);
     }
 }
